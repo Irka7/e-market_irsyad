@@ -21,7 +21,9 @@
                     <tbody>
                         @foreach ($barang as $b)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}
+                                    <input type="hidden" class="idBarang" name="idBarang" value="{{ $b->id }}">
+                                </td>
                                 <td>{{ $b->kode_barang }}</td>
                                 <td>{{ $b->nama_barang }}</td>
                                 <td>{{ $b->harga_jual }}</td>

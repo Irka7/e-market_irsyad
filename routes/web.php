@@ -20,16 +20,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('login', [UserController::class, 'index']);
+// Route::get('login', [UserController::class, 'index']);
 
-Route::get('/', [HomeController::class, 'layout']);
-Route::get('profile', [HomeController::class, 'profile']);
-Route::get('contact', [HomeController::class, 'contact']);
-Route::resource('produk', ProdukController::class);
-Route::resource('pemasok', PemasokController::class);
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('barang', BarangController::class);
-Route::resource('pembelian', PembelianController::class);
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', [HomeController::class, 'layout']);
+    Route::get('profile', [HomeController::class, 'profile']);
+    Route::get('contact', [HomeController::class, 'contact']);
+    Route::resource('produk', ProdukController::class);
+    Route::resource('pemasok', PemasokController::class);
+    Route::resource('pelanggan', PelangganController::class);
+    Route::resource('barang', BarangController::class);
+    Route::resource('pembelian', PembelianController::class);
+});
+
 
 //login
 Route::get('/login', [UserController::class, 'index'])->name('login');

@@ -13,7 +13,7 @@ class StorePembelianRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StorePembelianRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kode_masuk' => 'required',
+            'tanggal_masuk' => 'required',
+            'total' => 'required',
+            'pemasok_id' => 'required',
+            'barang_id' => 'required',
+            'harga_beli' => 'required',
+            'jumlah' => 'required',
+            'sub_total' => 'required'
         ];
     }
 }
